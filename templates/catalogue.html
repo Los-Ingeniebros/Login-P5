@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Catalogue</title>
+</head>
+<body>
+    <header>
+        {% if session.get('user_id') != None %}
+            <p>Hi, {{ session.get('user_id') }}</p>
+        {% endif %}
+    </header>
+    <ul>
+        {% for item in items %}
+            <li> {{ item }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
