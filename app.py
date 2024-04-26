@@ -1,7 +1,7 @@
 from flask import Flask, redirect, render_template, url_for, request, flash, session, Blueprint
 
 from controller.catalogue import catalogue
-from modelo import usuario
+from modelo.usuario import Usuarios
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ferfong:Develooper123!@localhost:3306/ing_soft'
 app.config.from_mapping(
@@ -24,7 +24,7 @@ def login():
     name = request.form.get('username')
     passwd = request.form.get('password')
     
-    for registro in usuario.query.all():
+    for registro in Usuarios.query.all():
             id += 1
             if name == registro.nombre and passwd == registro.password:
                 flash("ERROR: Pon otro correo!")
