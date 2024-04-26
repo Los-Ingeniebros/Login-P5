@@ -3,9 +3,10 @@ from flask import Flask, redirect, render_template, url_for, request, flash, ses
 from controller.catalogue import catalogue
 from modelo import usuario
 app = Flask(__name__)
-app.register_blueprint(catalogue)
-app.config['SECRET_KEY'] = 'dev'
-
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ferfong:Develooper123!@localhost:3306/ing_soft'
+app.config.from_mapping(
+    SECRET_KEY='dev'
+)
 
 @app.route('/')
 def hello_world():
