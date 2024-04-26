@@ -1,8 +1,8 @@
 import re
 from flask import Blueprint, request, render_template, flash, url_for
-from alchemyClasses import db
-from alchemyClasses.Usuarios import Usuarios
-from alchemyClasses.Rentar import Rentar
+from modelo import db
+# from alchemyClasses.Usuarios import Usuarios
+# from alchemyClasses.Rentar import Rentar
 
 usuario_blueprint = Blueprint('usuario', __name__, url_prefix='/usuario')
 
