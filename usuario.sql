@@ -1,4 +1,3 @@
-drop database usuario;
 create database usuario;
 
 create user 'ing'@'localhost' identified by 'Developer123!';
