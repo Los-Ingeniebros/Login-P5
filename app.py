@@ -18,7 +18,7 @@ def inicioSesion():
     return redirect(url_for('login'))
 
 
-@app.route('/tonto', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if session.get('user_id') != None:
         return render_template('login.html', user=session['user_id'])
