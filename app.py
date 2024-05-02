@@ -1,6 +1,7 @@
 # https://stackoverflow.com/questions/73309491/port-xxxx-is-in-use-by-another-program-either-identify-and-stop-that-program-o
 # https://stackoverflow.com/questions/68012921/i-get-options-method-instead-of-post-in-flask
 # https://stackoverflow.com/questions/10434599/get-the-data-received-in-a-flask-request
+from flask import Flask, redirect, render_template, url_for, request, flash, session, Blueprint
 
 import json
 
@@ -9,6 +10,7 @@ from flask_cors import CORS
 
 from alchemyClasses import db
 from controller.catalogue import catalogue
+<<<<<<< HEAD
 from controller.UsuarioControlador import usuario_blueprint
 from alchemyClasses.Usuario import Usuario
 
@@ -19,9 +21,22 @@ app.config['SECRET_KEY'] = 'dev'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ing:Developer123!@localhost:3306/usuario'
 db.init_app(app)
 CORS(app)
+=======
+from modelo.usuario import Usuarios
+from modelo import db
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ferfong:Develooper123!@localhost:3306/merkApp'
+app.config.from_mapping(
+    SECRET_KEY='dev'
+)
+
+db.init_app(app)
+
+>>>>>>> desarrollo
 
 @app.route('/')
-def hello_world():
+def inicioSesion():
     return redirect(url_for('login'))
 
 
@@ -50,17 +65,16 @@ def login():
         contrasenia = request.json['contrasenia']        
         #print(f'\n{nombre}\n')
         #print(contrasenia)
-        id = 1
-        for registro in Usuario.query.all():
-            id += 1
-            if nombre == registro.nombre:
-                flash("ERROR: Pon otro nombre!")
-        usuario = Usuario(id, nombre, contrasenia)
+    
+        # for registro in Usuario.query.all():
+        #     if nombre == registro.nombre and contrasenia == registro.password:
+        #         flash("ERROR: Pon otro nombre!")
+        #usuario = Usuario(id, nombre, contrasenia)
         encontrado = Usuario.query.filter(Usuario.nombre == nombre, Usuario.contrasenia == contrasenia).first()
-        db.session.add(usuario)        
-        db.session.commit()                
-        print(f'\n{encontrado}\n')    
-        if encontrado != None: #Ustedes van a tener que cambiar esto, por una validación con la DB.
+        #db.session.add(usuario)        
+        #db.session.commit()                
+        #print(f'\n{encontrado}\n')    
+        if encontrado: #Ustedes van a tener que cambiar esto, por una validación con la DB.
             session['user_id'] = nombre #definición de cookie de sesión.
             #return render_template('login.html', user=nombre)                
             return json.dumps({'nombre': nombre, 'contrasenia': contrasenia})
