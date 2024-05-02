@@ -23,26 +23,6 @@ function App() {
     })
   }
 
-  /*
-  async function addName (name) {
-    console.log(name);
-    const response = await fetch('http://127.0.0.1:5000/add_name', {
-      method:'POST',
-      body: JSON.stringify(name),
-      headers: {
-        'Content-Type':'application/json'
-      }
-    });
-    const data = await response.json();
-    console.log(data);
-    if (data.error !== undefined) {
-      alert("ERROR! " + data.error);
-    } else {
-      alert("Name added!");
-    }
-  }
-  */
-
   const cambiarVentana = () => {
     const contenidoNuevaVentana = (
       <div>
