@@ -17,7 +17,7 @@ app = Flask(__name__)
 app.register_blueprint(catalogue)
 app.register_blueprint(usuario_blueprint)
 app.config['SECRET_KEY'] = 'dev'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ing:Developer123!@localhost:3306/usuario'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ferfong:Develooper123!@localhost:3306/usuario'
 db.init_app(app)
 CORS(app)
 
