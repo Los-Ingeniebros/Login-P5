@@ -10,7 +10,6 @@ from flask_cors import CORS
 
 from alchemyClasses import db
 from controller.catalogue import catalogue
-<<<<<<< HEAD
 from controller.UsuarioControlador import usuario_blueprint
 from alchemyClasses.Usuario import Usuario
 
@@ -21,19 +20,6 @@ app.config['SECRET_KEY'] = 'dev'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ing:Developer123!@localhost:3306/usuario'
 db.init_app(app)
 CORS(app)
-=======
-from modelo.usuario import Usuarios
-from modelo import db
-
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ferfong:Develooper123!@localhost:3306/merkApp'
-app.config.from_mapping(
-    SECRET_KEY='dev'
-)
-
-db.init_app(app)
-
->>>>>>> desarrollo
 
 @app.route('/')
 def inicioSesion():
