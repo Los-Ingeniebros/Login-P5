@@ -42,7 +42,7 @@ function LogInForm (props) {
                 <input
                     id="password"
                     name="password"
-                    type='text'
+                    type='password'
                     value={enteredContrasenia}
                     onChange={contraseniaChangeHandler}
                 />

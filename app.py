@@ -28,7 +28,6 @@ def inicioSesion():
 
 @app.route('/login', methods=['GET', 'POST', 'OPTIONS'])
 def login(): 
-    #print(f'\n{request.method}\n')    
     if request.method == 'OPTIONS':           
         res = Response()        
         res.headers['X-Content-Type-Options'] = '*'
@@ -38,34 +37,20 @@ def login():
     if request.method == 'GET':        
         return render_template('index.html')
     boton = request.form.get('registrar')
-    #print(boton)
+  
     if boton == 'registrar':
         return redirect(url_for('usuario.registrar_usuario'))
     if request.method == 'POST':   
-        #print(request.json)          
-        #print()
-        #nombre = request.form.get('username')
-        #contrasenia = request.form.get('password')
-                
+     
         nombre = request.json['nombre']
         contrasenia = request.json['contrasenia']        
-        #print(f'\n{nombre}\n')
-        #print(contrasenia)
-    
-        # for registro in Usuario.query.all():
-        #     if nombre == registro.nombre and contrasenia == registro.password:
-        #         flash("ERROR: Pon otro nombre!")
-        #usuario = Usuario(id, nombre, contrasenia)
+        
         encontrado = Usuario.query.filter(Usuario.nombre == nombre, Usuario.contrasenia == contrasenia).first()
-        #db.session.add(usuario)        
-        #db.session.commit()                
-        #print(f'\n{encontrado}\n')    
+      
         if encontrado: #Ustedes van a tener que cambiar esto, por una validación con la DB.
-            session['user_id'] = nombre #definición de cookie de sesión.
-            #return render_template('login.html', user=nombre)                
+            session['user_id'] = nombre #definición de cookie de sesión.            
             return json.dumps({'nombre': nombre, 'contrasenia': contrasenia})
         flash('Invalid username or password')
-        #return redirect(url_for('login'))
         return json.dumps({'error':'Invalid username or password'})
 
 
