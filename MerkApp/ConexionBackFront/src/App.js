@@ -67,7 +67,8 @@ function App() {
     <div className="App">
       <header className="App-header">           
         <LogInForm onSaveName={ingresar}/>
-        <Usuario name={name} />              
+        {/* <Usuario name={name} />               */}
+        <div>--- Hola ---</div>
       </header>
     </div>
   );

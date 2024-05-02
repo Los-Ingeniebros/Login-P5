@@ -28,7 +28,7 @@ function LogInForm (props) {
     return (
         <form onSubmit={submitHandler}>
             <div>
-                <label>Name: </label>
+                <label>Nombre: </label>
                 <input 
                     id="username"
                     name="username"
