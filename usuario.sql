@@ -13,3 +13,5 @@ CREATE TABLE `usuario` (
   `contrasenia` varchar(64) NOT NULL,
   PRIMARY KEY (`idUsuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+insert into usuario (nombre, contrasenia) values ("ADMIN", "w123");
