@@ -1,35 +1,12 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom/client';
+// import ReactDOM from 'react-dom/client';
 import './App.css';
-import Name from './Name';
+// import Name from './Name';
 import LogInForm from './Login';
-import Usuario from './Usuario';
+// import Usuario from './Usuario';
 //import NewNameForm from './NewNameForm';
 
 function App() {
-
-  const [name, setName] = useState({
-    name:undefined,
-    contrasenia:undefined
-  });
-
-  function fetchNameHandler() {
-    fetch('http://127.0.0.1:5000/login')
-    .then((response) => {
-      return response.json(); //Si aquí hay un error, quiere decir que el back-end está mal.
-    })
-    .then((data) => { //Lambda en JS
-      setName(data);
-    })
-  }
-
-  const cambiarVentana = () => {
-    const contenidoNuevaVentana = (
-      <div>
-        <Usuario name={name} />       
-      </div>
-    )
-  };
 
   async function ingresar (name) {
     console.log(name);
@@ -46,18 +23,6 @@ function App() {
       alert("ERROR! " + data.error);
     } else {
       alert("Usuario encontrado!");
-
-      const nuevaVentana = window.open('', '_self');
-
-      //ReactDOM.render(cambiarVentana.contenidoNuevaVentana, nuevaVentana.document.body);
-      //const root = ReactDOM.createRoot(nuevaVentana.document.body);
-      //root.render(cambiarVentana.contenidoNuevaVentana)
-
-      const contenedor = nuevaVentana.document.createElement('div');
-      nuevaVentana.document.body.appendChild(contenedor);
-      const root = ReactDOM.createRoot(contenedor);
-      root.render(cambiarVentana.contenidoNuevaVentana);
-      setName(name);
     }
   }
 
@@ -65,7 +30,9 @@ function App() {
   // <button onClick={fetchNameHandler}>New Name</button>
   return (
     <div className="App">
-      <header className="App-header">           
+      <header className="App-header"> 
+        <h1>MerkApp</h1>
+        <p>Inicio de sesión:</p>    
         <LogInForm onSaveName={ingresar}/>
         {/* <Usuario name={name} />               */}
         <div>--- Hola ---</div>
