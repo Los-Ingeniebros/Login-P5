@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 
 function LogInForm (props) {
@@ -11,7 +11,7 @@ function LogInForm (props) {
 
     const contraseniaChangeHandler = (event) => {
         setContrasenia(event.target.value);
-    }
+    }    
 
     const submitHandler = (event) => {
         event.preventDefault();
@@ -25,10 +25,11 @@ function LogInForm (props) {
         setContrasenia('');
     }
 
-    return (
-        <form onSubmit={submitHandler}>
+    return (                
+        <form onSubmit={submitHandler}>                            
+            <p>Inicio de sesión</p>    
             <div>
-                <label>Nombre: </label>
+            <label>Nombre: </label>
                 <input 
                     id="username"
                     name="username"
@@ -46,12 +47,10 @@ function LogInForm (props) {
                     value={enteredContrasenia}
                     onChange={contraseniaChangeHandler}
                 />
-            </div>
-            <div>
-                <button type="submit">Log in</button>
-            </div>
+            </div>       
+            <button type="submit">Iniciar sesión</button>
         </form>
-    )
-}
+    );
+};
 
 export default LogInForm;
