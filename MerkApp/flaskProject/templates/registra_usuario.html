@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar usuario</title>
+    <style>
+        body {
+          background-color: yellow;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Registrar un usuario</h1>
+    <form method="post">
+        <label for="nombre">Ingrese el nombre:</label>
+        <input type="text" name="nombre" id="nombre" maxlength="200" required/>
+        <br>
+        <label for="password">Ingrese el password:</label>
+        <input type="password" name="contrasenia" id="contrasenia" maxlength="64" required/>
+        <br>
+        <button>Registrar</button>
+    </form>
+    {% if get_flashed_messages() %}
+        {% for message in get_flashed_messages() %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
