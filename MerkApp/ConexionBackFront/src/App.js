@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-// import ReactDOM from 'react-dom/client';
 import './App.css';
-// import Name from './Name';
 import LogInForm from './Login';
-// import Usuario from './Usuario';
-//import NewNameForm from './NewNameForm';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Home from './Home';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
+
+  const [user, setUser] = useState('');
+  const navigate = useNavigate();
 
   async function ingresar (name) {
     console.log(name);
@@ -22,21 +24,22 @@ function App() {
     if (data.error !== undefined) {
       alert("ERROR! " + data.error);
     } else {
-      alert("Usuario encontrado!");
-    }
-  }
+      alert("Usuario encontrado!");   
+      console.log(name['nombre'])
+      setUser(name['nombre']); 
+      navigate('/home');
+    }      
+  };
 
-  // <Name name={name} />
-  // <button onClick={fetchNameHandler}>New Name</button>
   return (
     <div className="App">
-      <header className="App-header"> 
-        <h1>MerkApp</h1>
-        <p>Inicio de sesión:</p>    
-        <LogInForm onSaveName={ingresar}/>
-        {/* <Usuario name={name} />               */}
-        <div>--- Hola ---</div>
-      </header>
+      <header className="App-header">  
+        <h1>MerkApp</h1>                 
+        <Routes>
+          <Route path="/" element={<LogInForm onSaveName={ingresar}/>} />  
+          <Route path="/home" element={Home(user)} />  
+        </Routes>        
+      </header>      
     </div>
   );
 }
